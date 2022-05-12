@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.web.shinhan.mapper.payment.PaymentMapper;
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,14 +18,11 @@ import com.web.shinhan.entity.Payment;
 import com.web.shinhan.model.PaymentDto;
 import com.web.shinhan.repository.PaymentRepository;
 
+@RequiredArgsConstructor
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
-
-	@Autowired
-	private PaymentRepository paymentRepository;
+	private final PaymentRepository paymentRepository;
 
 	private final PaymentMapper mapper = Mappers.getMapper(PaymentMapper.class);
 

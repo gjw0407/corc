@@ -9,6 +9,7 @@ import com.web.shinhan.service.payment.PaymentService;
 import com.web.shinhan.service.paymentItem.PaymentitemService;
 import com.web.shinhan.service.store.StoreService;
 import com.web.shinhan.service.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ import com.web.shinhan.model.UserDto;
 
 import io.swagger.annotations.ApiOperation;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = { "*" })
@@ -40,17 +42,13 @@ public class UserController {
 
 	public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-	@Autowired
-	UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	StoreService storeService;
+	private final StoreService storeService;
 
-	@Autowired
-	PaymentService paymentService;
+	private final PaymentService paymentService;
 
-	@Autowired
-	PaymentitemService paymentitemService;
+	private final PaymentitemService paymentitemService;
 
 	@ApiOperation(value = "회원 결제 내역", notes = "회원의 결제 내역을 가지고 온다.", response = HashMap.class)
 	@GetMapping("/payment")
@@ -136,7 +134,6 @@ public class UserController {
 		HttpStatus status = HttpStatus.ACCEPTED;
 
 		try {
-			System.out.println(storeId + storeGugunCode);
 			UserDto user = userService.findUserInfo(userId);
 			String userDays = user.getDays();
 			LocalDateTime now = LocalDateTime.now();

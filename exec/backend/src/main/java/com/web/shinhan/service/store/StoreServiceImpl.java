@@ -2,6 +2,7 @@ package com.web.shinhan.service.store;
 
 import java.time.LocalDateTime;
 
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,17 +17,13 @@ import com.web.shinhan.mapper.store.StoreMapper;
 import com.web.shinhan.repository.PaymentRepository;
 import com.web.shinhan.repository.StoreRepository;
 
+@RequiredArgsConstructor
 @Service
 public class StoreServiceImpl implements StoreService {
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private StoreRepository storeRepository;
-
-	@Autowired
-	private PaymentRepository paymentRepository;
+	private final  StoreRepository storeRepository;
 
 	private final StoreMapper mapper = Mappers.getMapper(StoreMapper.class);
 

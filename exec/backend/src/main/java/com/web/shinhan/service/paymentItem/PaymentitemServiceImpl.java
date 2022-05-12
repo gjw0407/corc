@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.web.shinhan.mapper.paymentItem.PaymentitemMapper;
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,16 +16,11 @@ import com.web.shinhan.entity.Paymentitem;
 import com.web.shinhan.model.PaymentitemDto;
 import com.web.shinhan.repository.PaymentitemRepository;
 
+@RequiredArgsConstructor
 @Service
 public class PaymentitemServiceImpl implements PaymentitemService {
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
-
-	@Autowired
-	private PaymentitemRepository paymentitemRepository;
-
-	private final PaymentitemMapper mapper = Mappers.getMapper(PaymentitemMapper.class);
+	private final PaymentitemRepository paymentitemRepository;
 
 	@Override
 	@Transactional

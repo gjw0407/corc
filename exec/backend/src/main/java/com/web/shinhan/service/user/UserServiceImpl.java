@@ -2,6 +2,7 @@ package com.web.shinhan.service.user;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,17 +19,15 @@ import com.web.shinhan.mapper.user.UserMapper;
 import com.web.shinhan.repository.AdminRepository;
 import com.web.shinhan.repository.UserRepository;
 
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
-	@Autowired
-	private AdminRepository adminRepository;
+	private final AdminRepository adminRepository;
 
 	private final UserMapper mapper = Mappers.getMapper(UserMapper.class);
 

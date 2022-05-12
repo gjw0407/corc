@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.web.shinhan.service.paymentItem.jwt.JwtService;
+import com.web.shinhan.service.jwt.JwtService;
 import com.web.shinhan.service.store.StoreService;
 import com.web.shinhan.service.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.shinhan.model.AdminDto;
 import com.web.shinhan.model.StoreDto;
 import com.web.shinhan.model.UserDto;
-import com.web.shinhan.service.paymentItem.jwt.JwtServiceImpl;
 
 import io.swagger.annotations.ApiOperation;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/login")
 @CrossOrigin(origins = { "*" })
@@ -32,14 +32,11 @@ public class LoginController {
 
 	public static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-	@Autowired
-	private JwtService jwtService;
+	private final JwtService jwtService;
 
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	private StoreService storeService;
+	private final StoreService storeService;
 
 	@ApiOperation(value = "웹 로그인", notes = "DB에서 정보를 조회하여 로그인 정보와 일치하면 로그인한다.", response = HashMap.class)
 	@PostMapping("/web")

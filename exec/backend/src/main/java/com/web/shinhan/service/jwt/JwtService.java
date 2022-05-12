@@ -1,4 +1,4 @@
-package com.web.shinhan.service.paymentItem.jwt;
+package com.web.shinhan.service.jwt;
 
 import com.web.shinhan.model.AdminDto;
 import com.web.shinhan.model.StoreDto;

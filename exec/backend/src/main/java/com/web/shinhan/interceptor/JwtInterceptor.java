@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.web.shinhan.service.paymentItem.jwt.JwtServiceImpl;
+import com.web.shinhan.service.jwt.JwtServiceImpl;
 
 @Component
 public class JwtInterceptor implements HandlerInterceptor {

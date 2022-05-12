@@ -1,4 +1,4 @@
-package com.web.shinhan.service.paymentItem.jwt;
+package com.web.shinhan.service.jwt;
 
 import java.util.Date;
 import java.util.Map;

@@ -1,38 +1,26 @@
 package com.web.shinhan.controller;
 
+import com.web.shinhan.model.*;
+import com.web.shinhan.service.area.AreaService;
+import com.web.shinhan.service.payment.PaymentService;
+import com.web.shinhan.service.store.StoreService;
+import com.web.shinhan.service.user.UserService;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.web.shinhan.service.area.AreaService;
-import com.web.shinhan.service.payment.PaymentService;
-import com.web.shinhan.service.store.StoreService;
-import com.web.shinhan.service.user.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.web.shinhan.model.GugunDto;
-import com.web.shinhan.model.PaymentDto;
-import com.web.shinhan.model.SidoDto;
-import com.web.shinhan.model.StoreDto;
-import com.web.shinhan.model.UserDto;
-
-import io.swagger.annotations.ApiOperation;
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin(origins = { "*" })
@@ -40,17 +28,13 @@ public class AdminController {
 
 	public static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-	@Autowired
-	UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	StoreService storeService;
+	private final StoreService storeService;
 
-	@Autowired
-	PaymentService paymentService;
+	private final PaymentService paymentService;
 
-	@Autowired
-	AreaService areaService;
+	private final AreaService areaService;
 
 	@ApiOperation(value = "회원 목록 조회", notes = "회원들의 정보를 반환한다.", response = HashMap.class)
 	@GetMapping("/user/list")

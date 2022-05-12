@@ -7,6 +7,7 @@ import java.util.Map;
 import com.web.shinhan.service.payment.PaymentService;
 import com.web.shinhan.service.store.StoreService;
 import com.web.shinhan.service.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.web.shinhan.model.StoreDto;
 
 import io.swagger.annotations.ApiOperation;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/board")
 @CrossOrigin(origins = { "*" })
@@ -34,14 +36,11 @@ public class BoardController {
 
 	public static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
-	@Autowired
-	UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	StoreService storeService;
+	private final StoreService storeService;
 
-	@Autowired
-	PaymentService paymentService;
+	private final PaymentService paymentService;
 
 	@ApiOperation(value = "사용된 금액", notes = "assignedTotal: 배정된 총액\r\n" + "notConfirmed: 정산되어야 하는 금액\r\n"
 			+ "used: 사용된 금액", response = HashMap.class)

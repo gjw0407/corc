@@ -3,6 +3,7 @@ package com.web.shinhan.service.area;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,17 +19,13 @@ import com.web.shinhan.mapper.sido.SidoMapper;
 import com.web.shinhan.repository.GugunRepository;
 import com.web.shinhan.repository.SidoRepository;
 
+@RequiredArgsConstructor
 @Service
 public class AreaServiceImpl implements AreaService {
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
+	private final SidoRepository sidocodeRepository;
 
-	@Autowired
-	private SidoRepository sidocodeRepository;
-
-	@Autowired
-	private GugunRepository guguncodeRepository;
+	private final GugunRepository guguncodeRepository;
 
 	private final SidoMapper sidoMapper = Mappers.getMapper(SidoMapper.class);
 
