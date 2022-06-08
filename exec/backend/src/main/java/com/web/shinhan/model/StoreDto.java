@@ -12,9 +12,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Data
-@NoArgsConstructor
 public class StoreDto {
 
 	private int storeId;
