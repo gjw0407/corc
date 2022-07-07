@@ -58,6 +58,6 @@ feat: 로그인 기능 구현 / fix: 회원가입 수정
 
 - **이혜진** - *PM, Frontend*
 - **곽지원** - *Backend*
-- **윤현수** - *Frontend, Backend*
+- **윤현수** - *Android App*
 - **정지환** - *Blockchain*
-- **주정훈** - *Backend, Server*
+- **주정훈** - *Android App*
